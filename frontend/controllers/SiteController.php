@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Article;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -75,7 +76,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $article = new Article();
+
+        return $this->render('index', [
+            'articles' => $article->getArticles(),
+        ]);
     }
 
     /**
@@ -256,4 +261,5 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
 }
