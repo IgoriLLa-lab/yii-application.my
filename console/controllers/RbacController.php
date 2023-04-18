@@ -43,6 +43,8 @@ class RbacController extends Controller
         $auth->add($administrator);
         $auth->addChild($administrator, $updateArticle);
         $auth->addChild($administrator, $deleteArticle);
+
+        $auth->assign($administrator, 1);
     }
 
 }
