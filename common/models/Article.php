@@ -45,4 +45,12 @@ class Article extends ActiveRecord
         ];
     }
 
+    /*
+ * Возвращает массив объектов модели Article
+ */
+    public function getArticles(): array
+    {
+        return $this->find()->all();
+    }
+
 }
