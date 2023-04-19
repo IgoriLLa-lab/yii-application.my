@@ -23,11 +23,11 @@ class ArticleController extends Controller
         if ($model->load(Yii::$app->request->post())){
             $model->user_id = Yii::$app->user->getId();
             $model->save();
-
             $this->refresh();
+
         }
 
-        return $this->render('create-article', ['model' => $model]);
+        return $this->render('create-article', compact('model'));
     }
 
 }
