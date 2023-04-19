@@ -45,6 +45,11 @@ class Article extends ActiveRecord
         ];
     }
 
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['user_id' => 'id']);
+    }
+
     /*
  * Возвращает массив объектов модели Article
  */
