@@ -30,7 +30,7 @@ class RbacController extends Controller
         $auth->add($updateArticle);
 
         $deleteArticle = $auth->createPermission('deleteArticle');
-        $deleteArticle->description = 'Delete post';
+        $deleteArticle->description = 'Delete article';
         $auth->add($deleteArticle);
 
         $user = $auth->createRole('user');
