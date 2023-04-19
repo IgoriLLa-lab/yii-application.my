@@ -21,9 +21,9 @@ $this->title = 'My Yii Application';
             <?php foreach ($articles as $article) { ?>
                 <div class="content">
                     <h3><?= $article->name ?></h3>
-                    <h4><?= $article->article ?></h4>
+                    <h4><?= $article->article ?> </h4>
                 </div>
-                <?= Html::a(Yii::t('app','Читать далее'), ['post/view', 'url' => $article->id]) ?>
+
             <?php } ?>
 
         </div>
