@@ -127,8 +127,6 @@ class SiteController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => User::find()
                 ->select(['user.*'])
-
-
         ]);
 
         return $this->render('user', ['dataProvider' => $dataProvider]);
