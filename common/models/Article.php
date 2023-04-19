@@ -48,7 +48,7 @@ class Article extends ActiveRecord
     /*
  * Возвращает массив объектов модели Article
  */
-    public function getArticles(): array
+    public function getAllArticles(): array
     {
         return $this->find()->all();
     }
