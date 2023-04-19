@@ -2,8 +2,11 @@
 
 namespace backend\controllers;
 
+use common\models\Article;
 use common\models\LoginForm;
+use common\models\User;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -25,7 +28,7 @@ class SiteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index'],
+                        'actions' => ['index', 'view', 'user'],
                         'roles' => ['administrator'],
                     ],
                     [
@@ -67,7 +70,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $dataProvider = new ActiveDataProvider([
+            'query' => Article::find()
+        ]);
+
+        return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
     /**
@@ -105,5 +112,25 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionView($id)
+    {
+        $model = Article::findOne($id);
+
+        return $this->render('view', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionUser(){
+        $dataProvider = new ActiveDataProvider([
+            'query' => User::find()
+                ->select(['user.*'])
+
+
+        ]);
+
+        return $this->render('user', ['dataProvider' => $dataProvider]);
     }
 }
