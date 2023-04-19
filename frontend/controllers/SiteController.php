@@ -79,7 +79,7 @@ class SiteController extends Controller
         $article = new Article();
 
         return $this->render('index', [
-            'articles' => $article->getArticles(),
+            'articles' => $article->getAllArticles(),
         ]);
     }
 
@@ -149,16 +149,6 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionCreateArticle()
-    {
-        return $this->render('create-article');
     }
 
     /**
