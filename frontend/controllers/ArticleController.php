@@ -4,8 +4,8 @@ namespace frontend\controllers;
 
 use common\models\Article;
 use common\models\User;
-use Yii;
-use yii\web\Controller;
+use Yii;use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 
 class ArticleController extends Controller
 {
@@ -15,19 +15,21 @@ class ArticleController extends Controller
      *
      * @return string
      */
-    public function actionCreateArticle() : string
+    public function actionCreateArticle()
     {
-
         $model = new Article();
 
-        if ($model->load(Yii::$app->request->post())){
-            $model->user_id = Yii::$app->user->getId();
-            $model->save();
-            $this->refresh();
-
+        if (Yii::$app->user->can('createArticle')){
+            if ($model->load(Yii::$app->request->post())){
+                $model->user_id = Yii::$app->user->getId();
+                $model->save();
+                $this->refresh();
+            }
+            return $this->render('create-article', compact('model'));
         }
 
-        return $this->render('create-article', compact('model'));
+        return $this->goHome();
+
     }
 
 }
