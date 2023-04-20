@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $form = ActiveForm::begin([
-    'id' => 'update-user',
+    'id' => 'update',
     'options' => ['class' => 'form-horizontal'],
 ]) ?>
 <?= $form->field($model, 'username') ?>
