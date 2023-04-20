@@ -2,12 +2,9 @@
 
 namespace backend\controllers;
 
-use common\models\Article;
+
 use common\models\LoginForm;
-use common\models\User;
 use Yii;
-use yii\data\ActiveDataProvider;
-use yii\db\StaleObjectException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
