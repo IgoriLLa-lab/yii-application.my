@@ -65,20 +65,6 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Article::find()
-        ]);
-
-        return $this->render('index', ['dataProvider' => $dataProvider]);
-    }
-
-    /**
      * Login action.
      *
      * @return string|Response
@@ -103,6 +89,10 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionIndex(){
+        return $this->render('index');
+    }
+
     /**
      * Logout action.
      *
@@ -111,51 +101,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    public function actionView($id)
-    {
-        $model = Article::findOne($id);
-
-        return $this->render('view', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionUser()
-    {
-        $dataProvider = new ActiveDataProvider([
-            'query' => User::find()
-        ]);
-
-        return $this->render('user', ['dataProvider' => $dataProvider]);
-    }
-
-    public function actionUpdate(int $id)
-    {
-        $model = Article::findOne($id);
-
-        if ($model->load(Yii::$app->request->post())) {
-            $model->update();
-            return $this->goHome();
-        }
-
-        return $this->render('edit-article', ['model' => $model]);
-    }
-
-    /**
-     * @throws StaleObjectException
-     * @throws \Throwable
-     */
-    public function actionDelete($id)
-    {
-        $model = Article::findOne($id);
-
-        if ($model) {
-            $model->delete();
-        }
 
         return $this->goHome();
     }
