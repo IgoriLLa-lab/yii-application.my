@@ -46,7 +46,7 @@ class ArticleController extends Controller
         if ($model) {
             $model->delete();
 
-            return $this->redirect('view');
+            return $this->goHome();
         }
         return '';
     }
