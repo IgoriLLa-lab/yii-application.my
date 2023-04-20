@@ -7,6 +7,7 @@ use common\models\LoginForm;
 use common\models\User;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\db\StaleObjectException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -28,7 +29,7 @@ class SiteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'user'],
+                        'actions' => ['index', 'view', 'user', 'update', 'delete', 'update-user', 'user-index'],
                         'roles' => ['administrator'],
                     ],
                     [
@@ -123,7 +124,8 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionUser(){
+    public function actionUser()
+    {
         $dataProvider = new ActiveDataProvider([
             'query' => User::find()
                 ->select(['user.*'])
@@ -131,4 +133,43 @@ class SiteController extends Controller
 
         return $this->render('user', ['dataProvider' => $dataProvider]);
     }
+
+    public function actionUpdate(int $id)
+    {
+        $model = Article::findOne($id);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->update();
+            return $this->goHome();
+        }
+
+        return $this->render('edit-article', ['model' => $model]);
+    }
+
+    /**
+     * @throws StaleObjectException
+     * @throws \Throwable
+     */
+    public function actionDelete($id)
+    {
+        $model = Article::findOne($id);
+
+        if ($model) {
+            $model->delete();
+        }
+
+        return $this->goHome();
+    }
+
+    public function actionUpdateUser($id){
+        $model = User::findOne($id);
+
+        if ($model->load(Yii::$app->request->post())) {
+            $model->update();
+            $this->render('update-user', ['model' => $model]);
+        }
+
+        return $this->render('update-user', ['model' => $model]);
+    }
+
 }
