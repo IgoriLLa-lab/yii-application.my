@@ -1,9 +1,8 @@
-cj<?php
+<?php
 
 namespace backend\controllers;
 
 use common\models\Article;
-use common\models\User;
 use Throwable;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -14,7 +13,7 @@ class ArticleController extends Controller
 {
 
     /**
-     * Displays homepage.
+     * Выводим
      *
      * @return string
      */
@@ -24,7 +23,7 @@ class ArticleController extends Controller
             'query' => Article::find()
         ]);
 
-        return $this->render('index', ['dataProvider' => $dataProvider]);
+        return $this->render('article-index', ['dataProvider' => $dataProvider]);
     }
 
         public function actionView($id)
