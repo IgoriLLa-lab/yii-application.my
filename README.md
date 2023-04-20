@@ -1,60 +1,65 @@
-<p align="center">
-    <a href="https://github.com/yiisoft" target="_blank">
-        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
-    </a>
-    <h1 align="center">Yii 2 Advanced Project Template</h1>
-    <br>
-</p>
+# Выполнять задание с использованием фреймворка Yii2.
 
-Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-developing complex Web applications with multiple tiers.
+#### Написать приложение с авторизацией\регистрацией пользователей.
 
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
+- Создать несколько таблиц и заполнить тестовыми данными.
+- При авторизации вывести навигационную панель с кнопками, по нажатию на которые выводятся данные из созданных таблиц.
+- ✨Учесть, что у пользователей должны быть роли - количество ролей неважно, однако важно, чтобы была роль Админ.
+- Если пользователь авторизован как Админ, то вывести дополнительно в навигационную панель таблицу с пользователями.
 
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
+#### Дополнительно.
 
-Documentation is at [docs/guide/README.md](docs/guide/README.md).
+- Для пользователя Админ реализовать добавление\редактирование данных.
+- Два варианта выполнения:
+- A) простой - без особых условий, полная свобода выбора реализации;
+- B) усложненный - выполнить задание с использованием динамических баз данных, которые создаются под каждого пользователя с определенным набором таблиц.
 
-[![Latest Stable Version](https://img.shields.io/packagist/v/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![Total Downloads](https://img.shields.io/packagist/dt/yiisoft/yii2-app-advanced.svg)](https://packagist.org/packages/yiisoft/yii2-app-advanced)
-[![build](https://github.com/yiisoft/yii2-app-advanced/workflows/build/badge.svg)](https://github.com/yiisoft/yii2-app-advanced/actions?query=workflow%3Abuild)
+## Используемые технологии (Tech):
 
-DIRECTORY STRUCTURE
--------------------
+- [PHP 8.1]
+- [YII2] -  advanced
+- [MySQL]
+- [Bootstrap] s
+- [OpenServer 5.4.2] - локально
 
+## Установка (Installation)
+
+Последняя версия проекта [Github](https://github.com/IgoriLLa-lab/yii-application.my/tree/master)
+
+## О проекте
+
+Установлена версия advanced
+
+Frontend index:
+
+```sh
+http://frontend.test/index.php
 ```
-common
-    config/              contains shared configurations
-    mail/                contains view files for e-mails
-    models/              contains model classes used in both backend and frontend
-    tests/               contains tests for common classes    
-console
-    config/              contains console configurations
-    controllers/         contains console controllers (commands)
-    migrations/          contains database migrations
-    models/              contains console-specific model classes
-    runtime/             contains files generated during runtime
-backend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains backend configurations
-    controllers/         contains Web controller classes
-    models/              contains backend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for backend application    
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-frontend
-    assets/              contains application assets such as JavaScript and CSS
-    config/              contains frontend configurations
-    controllers/         contains Web controller classes
-    models/              contains frontend-specific model classes
-    runtime/             contains files generated during runtime
-    tests/               contains tests for frontend application
-    views/               contains view files for the Web application
-    web/                 contains the entry script and Web resources
-    widgets/             contains frontend widgets
-vendor/                  contains dependent 3rd-party packages
-environments/            contains environment-based overrides
+
+Frontend create-article доступно только для зарегистрированных пользователей:
+```sh
+http://frontend.test/index.php?r=article%2Fcreate-article
 ```
+
+
+backend Index:
+
+```sh
+http://backend.test/index.php
+```
+
+Показать все статьи (просмотр стать, редактирование, удаление) доступно только для administrator
+
+```sh
+http://backend.test/index.php?r=article%2Farticle-index
+```
+
+Показать всех юзеров (редактирование, удаление) доступно только для administrator
+```sh
+http://backend.test/index.php?r=user%2Fuser-index
+```
+
+**Free Software, Hell Yeah!**
+
+
+ыполнить задание с использованием динамических баз данных, которые создаются под каждого пользователя с определенным набором таблиц.
