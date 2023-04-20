@@ -35,12 +35,14 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Articles', 'url' => ['/site/index']],
-        ['label' => 'User', 'url' => ['/user/user-index']],
+
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    }     
+    } else {
+        $menuItems[] = ['label' => 'Articles', 'url' => ['/article/article-index']];
+        $menuItems[] = ['label' => 'User', 'url' => ['/user/user-index']];
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
         'items' => $menuItems,
