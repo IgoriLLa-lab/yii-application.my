@@ -2,7 +2,6 @@
 
 namespace backend\controllers;
 
-use common\models\Article;
 use common\models\User;
 use Yii;
 use yii\data\ActiveDataProvider;
