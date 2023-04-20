@@ -161,15 +161,4 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    public function actionUpdateUser($id){
-        $model = User::findOne($id);
-
-        if ($model->load(Yii::$app->request->post())) {
-            $model->update();
-            $this->render('update-user', ['model' => $model]);
-        }
-
-        return $this->render('update-user', ['model' => $model]);
-    }
-
 }
