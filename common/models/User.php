@@ -54,6 +54,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['username', 'email'], 'string'],
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
@@ -214,5 +215,14 @@ class User extends ActiveRecord implements IdentityInterface
     public function getArticles()
     {
         return $this->hasMany(Article::class, ['id' => 'user_id']);
+    }
+
+
+    /*
+* Возвращает массив объектов модели User
+*/
+    public function getAllUser(): array
+    {
+        return $this->find()->all();
     }
 }
